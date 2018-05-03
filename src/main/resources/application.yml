@@ -1,0 +1,15 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        web-allow-others: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://mysqldbserver:3306/afropython
+  jpa:
+    hibernate:
+      ddl-auto: update

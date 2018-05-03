@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mysql:
+    container_name: mysqldbserver
+    build: ./docker/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: mysqladmin -u root ping
+      interval: 2s
+      timeout: 5s
+      retries: 30
+  web:
+      container_name: webapp
+      build:
+        context: .
+        dockerfile: docker/web/Dockerfile
+      ports:
+       - "8080:8080"
+      depends_on:
+       - mysql
